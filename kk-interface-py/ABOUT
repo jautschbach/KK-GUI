@@ -1,0 +1,101 @@
+
+----------------------------------------ABOUT----------------------------------------
+
+----REQUIREMENTS LINUX--------------------
+The following programs are required to be able to run kk-interface-py on Linux,
+     Python 2 or 3
+     Matplotlib
+     Numpy
+     Tkinter
+------------------------------------------
+----REQUIREMENTS WINDOWS------------------
+The following program are required to be able to run kk-interface-py on Windows,
+     Python 2 or 3
+     Matplotlib
+     Numpy
+     Tkinter
+------------------------------------------
+-----------PROGRAM DESCRIPTION------------
+This is a program created as a GUI for the Kramers-Kronig transformations so that it
+can be easier to transform and plot a given set of data. All tasks are performed 
+by Python coding and as such the numerical integration can take some time to 
+perfrom. Especially, the MSKK and CDKK methods as they require greater number of 
+operations.
+ 
+Program author Herbert Ludowieg.
+E-mail: herbertl@buffalo.edu
+
+    kk-interface-py is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    kk-interface-py is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with kk-interface-py.  If not, see <http://www.gnu.org/licenses/>.
+
+------------ACKNOWLEDGEMENTS--------------
+kk-interface-py can use the following methods to perform the transforms,
+
+        1). Kramers-Kronig (KK)
+        2). Multiply Subtractive KK (MSKK)
+        3). Chained Doubly-Subtractive KK (CDKK)
+
+All of the methods above make use of the Maclaurin Series which has been shown to
+outperform other numerical methods to execute the transformations as is shown by 
+Ohta and Ishida [1].
+
+In the MSKK method Palmer points out that the it develops as an Nth degree
+Lagrange polynomial [2]. As it is represented as such it begins to display Runge's
+Phenomenom and can give high degree of oscilations. The use of Chebyshev zero-nodes
+can reduce these oscillations significantly. As such, this has been implemented in
+the main program and can be accessed from the GUI. It is recommended to 
+adjust the range of the Chebyshev nodes so that they lie on important spectral 
+features.
+
+The CDKK method is a method that, as the name implies, only makes use of two anchor
+points in the transformation by calculating the transformation between the 
+[w_i:w_{i+1}] interval. This makes the transform behave more akin to a spline fit
+polynomial as opposed to an Nth degree Lagrange Polynomial. As such this method does
+not require that the anchor points be placed at the specific Chebyshev zero-nodes.
+Rudolph and Autschbach compared the two methods and showed that by using 1.5 to 2 
+times the number of uniformly distributed anchor points than those at the Chebyshev 
+zero-nodes over the range of the frequency measurement the CDKK method had equal or 
+better resolution than the MSKK method [3]. It was noted that while it may be more 
+costly to calculate a greater number of anchor points this method is still 
+recommended as it can be easier to place the anchor points on important spectral 
+features.
+
+The equations that are implemented in the program are outlined in reference 3.
+
+The equation for the MSKK method still has singularites that can form from the inner
+integral product. As such a method similar to the Maclaurin Series is applied on the 
+anchor points where there will be two sets of anchor points, one for the even and one
+for the odd indeces. Due to this, the transform on those points will be equal to the
+anchor value given. This is not believed to be an issue with a great number of data 
+points as the effect of this should be none to neglible.
+
+The code for the mskk.f90, cdkk.f90 and datfit.f90 scripts were taken from scripts
+written by Mark Rudolph with slight modifications so as to be able to link the code
+with Python as a module. The code for the kktransform.f90 script was taken from a
+script written by Jochen Autschbach with similar modifications. The code used to link
+the matplotlib plots with Tkinter was derived from a sample code provided by
+matplotlib which can be found on the following link,
+
+<http://matplotlib.org/examples/user_interfaces/embedding_in_tk.html>
+
+
+-----References-----
+
+[1] Ohta K, Ishida H. Comparison among several numerical integration methods for
+        Kramers-Kronig transformations. Appl Spectrosc 1988;42:952-957.
+[2] Palmer KF, Williams MZ, Budde BA. Multiply subtractive Kramers-Kronig analysis
+        of optical data. Appl Opt 1998;37:2660-2673.
+[3] Rudolph M, Autschbach J. Fast Generation of Nonresonant and Resonant Optical
+        Rotatory Dispersion Curves with the Help of Circular Dichroism Calculations
+        and Kramers-Kronig Transformations. Chirality 2008;20:995-1008.
+

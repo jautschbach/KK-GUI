@@ -1,0 +1,39 @@
+
+----------------------------------------HELP----------------------------------------
+
+This is a small help window inteded to help with running the program. If there are
+any errors with the Fortran file imports please refer to the LIN/WIN-make files.
+LIN is for Linux and WIN is for Windows.
+
+To run the program it will need a data file input upon start-up. Nothing else can be
+done before this. Once the data is selected most of the buttons on the interface
+become available. Executing the program at this point will perform the
+Kramers-Kronig (KK) transformations. It is recommended to check the data spacing and
+to make sure that it is evenly spaced or the transformation will not work as well as
+it should. The data that is loaded can also be plotted to get a better sense of what 
+the data looks like.
+
+If the user wishes to use either the Multiply Subtractive KK (MSKK) method or the
+Chained Doubly-Subtractive KK (CDKK) method those can be used with the last button
+that is disabled. To enable it use the 'Use MSKK/CDKK method' button. This button
+will create another window from which you can create a grid to fill out the anchor
+points manually, load an anchorpoint file, or find the chebyshev zero-nodes.
+Whichever method is chosen once the points are shown on the window it will activate
+a 'Use anchor points' buton which when pressed wil activate the last button on the
+main interface.
+
+To use the CDKK method press the 'Use CDKK' button on the anchor points window. This
+will automatically change the method used from the default MSKK to the CDKK and then
+press on the respective execution button.
+
+When either of the execution buttons are pressed it will create a plot that will
+display both the transformed and the original input data.
+
+From this window the transformed data can be easily shown by selecting the 'Show
+Transformed Data' button which will create a textbox on the same window along with
+a save data button. This button can be used to save the data. The graph can be saved
+by using the save graph button. When this is selected this will only save the graph
+in one of the predetermined file formats as it is necessary for the savefig command.
+
+For more information about the program please refer to the ABOUT text.
+For license information please refer to the LICENSE text.

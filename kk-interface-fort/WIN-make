@@ -1,0 +1,58 @@
+Program will not run Python 3 with Windows.
+
+
+------------------------------------MAKEFILE NOTES-----------------------------------
+----REQUIREMENTS--------------------------
+    f2py (should come with numpy)
+    FORTRAN compiler (From MinGW)
+    make (MSYS from MinGW)
+    MinGW
+------------------------------------------
+----MAKEFILE INSTRUCTIONS-----------------
+Before the program can be run the FORTRAN modules on the fortran_scripts directory
+must be compiled. A makefile has been included in the directory to compile all of the
+.f90 files contained in the directory into one file.
+
+To compile the FORTRAN code simply run make on the windows CMD from the programs base 
+directory or the fortran_scripts directory. Python must be listed as a PATH variable 
+otherwise the code will not be able to compile.
+
+------------------------------------------
+----MinGW installation--------------------
+If gfortran is not installed please do so using MinGW for which the download
+is the .exe file in the following link,
+
+<https://sourceforge.net/projects/mingw/files/Installer/>
+
+and then proceed to go through the installation installing the following
+packages when it becomes available,
+
+---MinGW package list------------
+Package                 | Class |
+---------------------------------
+mingw-developer-toolkit | bin   |
+mingw32-base            | bin   |
+mingw32-gcc-fortran     | bin   |
+mingw32-gcc-fortran     | dev   |
+mingw32-gcc-fortran     | doc   |
+mingw32-gcc-fortran     | man   |
+mingw32-gcc-g++         | bin   |
+mingw32-gcc-g++         | dev   |
+mingw32-gcc             | bin   |
+mingw32-gcc             | dev   |
+msys-base               | bin   |
+
+Some of these packages may be under 'All packages' tab in the installer so make
+sure that they are all selected.
+
+Once that is done please add the bin folder in the MinGW\bin and the ***\msys\***\bin
+install directory to PATH. Also, make sure that the .py file extension is in the 
+PATHEXT. Make sure that you find the make.exe file in the ***\msys\***\bin directory
+where the '***' may indicate other directories that need to be navigated through.
+
+PATH and PATHEXT can be found in the 'View Advanced System Settings' menu on Windows 
+under the 'Environment Varibales' button.
+------------------------------------------
+
+
+
